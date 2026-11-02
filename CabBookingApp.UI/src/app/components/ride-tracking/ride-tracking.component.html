@@ -1,0 +1,31 @@
+
+<div class="tracking-page">
+  <h2>Live Driver Tracking</h2>
+
+  <div class="location-details" *ngIf="driverLocation; else waiting">
+    <p><strong>Ride ID:</strong> {{ driverLocation.rideId }}</p>
+    <p><strong>Latitude:</strong> {{ driverLocation.latitude }}</p>
+    <p><strong>Longitude:</strong> {{ driverLocation.longitude }}</p>
+    <p><strong>Last update:</strong> {{ driverLocation.updatedAt }}</p>
+  </div>
+
+  <ng-template #waiting>
+    <p>Waiting for driver location...</p>
+  </ng-template>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <button (click)="sendTestLocation()">Send Test Location</button>
+
+  <div id="ride-map"></div>
+
+  
+<button (click)="startGpsTracking()">
+  Start Live GPS
+</button>
+
+<button (click)="stopGpsTracking()">
+  Stop GPS
+</button>
+
+</div>

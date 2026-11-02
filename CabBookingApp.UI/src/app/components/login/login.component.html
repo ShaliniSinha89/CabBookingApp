@@ -1,0 +1,48 @@
+
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="logo">🚖</div>
+
+    <h2>Welcome Back!</h2>
+    <p class="subtitle">
+      Login to your CabBookingApp account
+    </p>
+
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+      <label for="email">Email Address</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        placeholder="Enter your email"
+        required
+        email
+      />
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="Enter your password"
+        required
+      />
+
+      <div class="error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit"
+              [disabled]="loginForm.invalid || loading">
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+    </form>
+
+    <p class="footer">
+      Don't have an account?
+      <a routerLink="/register">Register here</a>
+    </p>
+  </div>
+</div>

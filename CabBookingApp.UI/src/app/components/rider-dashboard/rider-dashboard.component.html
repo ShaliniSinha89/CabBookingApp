@@ -1,0 +1,104 @@
+
+<div class="dashboard">
+  <header class="dashboard-header">
+    <h1>Rider Dashboard</h1>
+    <p>Book a cab and track your ride in real time.</p>
+  </header>
+
+  <section class="card">
+    <h2>Book a Ride</h2>
+
+    <form (ngSubmit)="bookRide()">
+      <label for="pickup">Pickup Address</label>
+      <input
+        id="pickup"
+        name="pickup"
+        [(ngModel)]="pickupAddress"
+        placeholder="Enter pickup address"
+        required
+      />
+
+      <button type="button" (click)="getMyLocation()">
+        📍 Use My Current Location
+      </button>
+
+      <label for="destination">Destination</label>
+      <input
+        id="destination"
+        name="destination"
+        [(ngModel)]="dropAddress"
+        placeholder="Enter destination"
+        required
+      />
+
+      <label for="pickupLat">Pickup latitude</label>
+      <input
+        id="pickupLat"
+        type="number"
+        name="pickupLat"
+        [(ngModel)]="pickUpLatitude"
+        step="any"
+        required
+      />
+
+      <label for="pickupLng">Pickup longitude</label>
+      <input
+        id="pickupLng"
+        type="number"
+        name="pickupLng"
+        [(ngModel)]="pickUpLongitude"
+        step="any"
+        required
+      />
+
+      <label for="dropLat">Destination latitude</label>
+      <input
+        id="dropLat"
+        type="number"
+        name="dropLat"
+        [(ngModel)]="dropLatitude"
+        step="any"
+        required
+      />
+
+      <label for="dropLng">Destination longitude</label>
+      <input
+        id="dropLng"
+        type="number"
+        name="dropLng"
+        [(ngModel)]="dropLongitude"
+        step="any"
+        required
+      />
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Booking...' : 'Book Cab' }}
+      </button>
+    </form>
+
+    <p *ngIf="message" role="status">{{ message }}</p>
+  </section>
+
+  <section class="card">
+    <h2>My Ride</h2>
+    <p>Ride ID: {{ rideId ?? 'No ride booked yet' }}</p>
+
+    <button type="button" *ngIf="rideId" (click)="trackRide()">
+      Track My Driver
+    </button>
+  </section>
+
+  <section class="card">
+    <h2>Notifications</h2>
+
+    <p *ngIf="notifications.length === 0">
+      No notifications yet.
+    </p>
+
+    <article *ngFor="let notification of notifications">
+      <strong>{{ notification.title }}</strong>
+      <p>{{ notification.message }}</p>
+      <small>{{ notification.createdAt | date:'short' }}</small>
+    </article>
+  </section>
+</div>

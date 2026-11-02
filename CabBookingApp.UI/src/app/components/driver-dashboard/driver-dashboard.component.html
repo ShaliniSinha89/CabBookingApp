@@ -1,0 +1,22 @@
+
+<section class="notifications">
+  <h2>Notifications</h2>
+
+  <button
+    type="button"
+    (click)="markNotificationsRead()">
+    Mark all as read
+  </button>
+
+  <p *ngIf="notifications.length === 0">
+    No notifications yet.
+  </p>
+
+  <article *ngFor="let notification of notifications">
+    <h3>{{ notification.title }}</h3>
+    <p>{{ notification.message }}</p>
+    <small>{{ notification.createdAt | date:'short' }}</small>
+    <span *ngIf="!notification.isRead">New</span>
+  </article>
+</section>
+

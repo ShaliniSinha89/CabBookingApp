@@ -1,0 +1,30 @@
+
+.tracking-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.location-details {
+  margin-bottom: 16px;
+}
+
+.location-details p {
+  margin: 6px 0;
+}
+
+button {
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+#ride-map {
+  width: 100%;
+  height: 450px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.error {
+  color: #b91c1c;
+}

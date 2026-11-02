@@ -1,0 +1,62 @@
+
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="logo">🚖</div>
+
+    <h2>Create Account</h2>
+    <p class="subtitle">Join CabBookingApp today</p>
+
+    <form #registerForm="ngForm"
+          (ngSubmit)="onRegister()">
+
+      <label for="fullName">Full Name</label>
+      <input id="fullName" type="text" name="fullName"
+             [(ngModel)]="form.fullName"
+             placeholder="Enter your full name"
+             required minlength="2" />
+
+      <label for="regEmail">Email Address</label>
+      <input id="regEmail" type="email" name="email"
+             [(ngModel)]="form.email"
+             placeholder="Enter your email"
+             required email />
+
+      <label for="phoneNumber">Phone Number</label>
+      <input id="phoneNumber" type="tel" name="phoneNumber"
+             [(ngModel)]="form.phoneNumber"
+             placeholder="10-digit mobile number"
+             required pattern="[0-9]{10}" maxlength="10" />
+
+      <label for="regPassword">Password</label>
+      <input id="regPassword" type="password" name="password"
+             [(ngModel)]="form.password"
+             placeholder="Create a password"
+             required minlength="8" />
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" type="password"
+             name="confirmPassword"
+             [(ngModel)]="confirmPassword"
+             placeholder="Re-enter your password"
+             required />
+
+      <div class="error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <div class="success" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+
+      <button type="submit"
+              [disabled]="registerForm.invalid || loading">
+        {{ loading ? 'Creating account...' : 'Register' }}
+      </button>
+    </form>
+
+    <p class="footer">
+      Already have an account?
+      <a routerLink="/login">Login here</a>
+    </p>
+  </div>
+</div>
